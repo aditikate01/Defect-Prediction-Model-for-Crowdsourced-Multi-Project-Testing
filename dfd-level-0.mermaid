@@ -1,0 +1,14 @@
+graph TD
+    Student((Student))
+    Teacher((Teacher))
+    Administrator((Administrator))
+    LDDS[Learning Disability Detection System]
+
+    Student -->|Inputs quiz answers| LDDS
+    LDDS -->|Provides feedback and results| Student
+    
+    Teacher -->|Manages quizzes and views reports| LDDS
+    LDDS -->|Generates reports| Teacher
+    
+    Administrator -->|Manages system and users| LDDS
+    LDDS -->|Provides system status and analytics| Administrator

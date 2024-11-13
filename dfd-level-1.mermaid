@@ -1,0 +1,35 @@
+graph TD
+    Student((Student))
+    Teacher((Teacher))
+    Administrator((Administrator))
+
+    subgraph "Learning Disability Detection System"
+        Login[1.0 Student Login]
+        QuizMgmt[2.0 Quiz Management]
+        LDDetection[3.0 LD Detection]
+        ReportGen[4.0 Report Generation]
+
+        DS1[(User Data)]
+        DS2[(Quiz Data)]
+        DS3[(LD Profiles)]
+        DS4[(Results Data)]
+    end
+
+    Student -->|Login credentials| Login
+    Login -->|Authenticated user| QuizMgmt
+    Login <-->|Read/Write| DS1
+
+    Student -->|Quiz answers| QuizMgmt
+    QuizMgmt -->|Quiz results| LDDetection
+    QuizMgmt <-->|Read/Write| DS2
+
+    LDDetection -->|Detected patterns| ReportGen
+    LDDetection <-->|Read| DS3
+
+    ReportGen -->|Generated reports| Teacher
+    ReportGen -->|Feedback| Student
+    ReportGen <-->|Read/Write| DS4
+
+    Teacher -->|Create/Update quizzes| QuizMgmt
+    Administrator -->|Manage users and system| Login
+    Administrator -->|Update LD profiles| LDDetection

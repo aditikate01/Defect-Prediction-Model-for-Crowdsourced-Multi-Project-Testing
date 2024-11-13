@@ -1,0 +1,18 @@
+erDiagram
+    STUDENT ||--o{ QUIZ : takes
+    QUIZ ||--|{ LEARNING_DISABILITY : assesses
+    STUDENT {
+        int student_id
+        string name
+        date dob
+    }
+    QUIZ {
+        int quiz_id
+        string title
+        float quiz_score
+    }
+    LEARNING_DISABILITY {
+        int ld_id
+        string ld_type
+        string description
+    }
